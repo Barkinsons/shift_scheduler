@@ -42,8 +42,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return baseUrl; // Redirects to the home page after login
     },
     async session({ session, token, user }) {
+      console.log(token);
       // Add role value to user object so it is passed along with session
       session.user.role = user?.role ? user.role : token.user.role;
+      session.user.id = user?._id ? user._id : token.user._id;
       return session;
     },
     async jwt({ token, account, user }) {
@@ -53,5 +55,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return Promise.resolve(token);
     },
+  },
+  pages: {
+    signIn: "/signin",
   },
 });
