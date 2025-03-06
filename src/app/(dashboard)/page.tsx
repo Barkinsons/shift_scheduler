@@ -4,7 +4,7 @@ export default async function DashboardPage() {
   return (
     <div className="flex flex-col">
       <div className="flex  p-4 gap-4">
-        <MyLink href="" name="filler"></MyLink>
+        <MyLink href="/schedule" name="Schedule"></MyLink>
         <MyLink href="" name="filler"></MyLink>
         <MyLink href="" name="filler"></MyLink>
       </div>
