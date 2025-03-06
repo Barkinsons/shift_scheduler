@@ -1,4 +1,5 @@
 import { auth } from "@/lib/auth";
+import Schedule from "./_components/Schedule";
 
 export default async function SchedulePage() {
   const session = await auth();
@@ -8,5 +9,5 @@ export default async function SchedulePage() {
   );
   const shifts = (await response.json()).data;
 
-  return <div>{JSON.stringify(shifts)}</div>;
+  return <Schedule shifts={shifts} />;
 }
