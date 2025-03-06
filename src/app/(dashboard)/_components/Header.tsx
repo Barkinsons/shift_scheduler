@@ -1,7 +1,10 @@
-import { auth } from "@/lib/auth";
+import { auth, signIn } from "@/lib/auth";
 
 const Header = async () => {
   const session = await auth();
+  if (!session || !session.user) {
+    await signIn();
+  }
 
   return (
     <div className="h-14 flex border-b-2 items-center p-4">

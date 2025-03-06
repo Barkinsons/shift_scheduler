@@ -1,16 +1,8 @@
-import { auth, signIn } from "@/lib/auth";
-import Header from "./_components/Header";
 import Link from "next/link";
 
 export default async function DashboardPage() {
-  const session = await auth();
-  if (!session || !session.user) {
-    await signIn();
-  }
-
   return (
     <div className="flex flex-col">
-      <Header></Header>
       <div className="flex  p-4 gap-4">
         <MyLink href="" name="filler"></MyLink>
         <MyLink href="" name="filler"></MyLink>
