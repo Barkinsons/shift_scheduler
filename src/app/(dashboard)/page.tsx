@@ -1,24 +1,16 @@
-import Link from "next/link";
+import Link from "./_components/OptionsLink";
+import Options from "./_components/OptionsPage";
+import { auth } from "@/lib/auth";
 
 export default async function DashboardPage() {
+  const session = await auth();
+
   return (
-    <div className="flex flex-col">
-      <div className="flex  p-4 gap-4">
-        <MyLink href="/schedule" name="Schedule"></MyLink>
-        <MyLink href="" name="filler"></MyLink>
-        <MyLink href="" name="filler"></MyLink>
-      </div>
-    </div>
+    <Options>
+      <Link href="/schedule" name="Schedule" />
+      <Link href="" name="filler" />
+      <Link href="" name="filler" />
+      {session?.user?.role === "Manager" && <Link href="/admin" name="Admin" />}
+    </Options>
   );
 }
-
-const MyLink = ({ name, href }: { name: string; href: string }) => {
-  return (
-    <Link
-      className="bg-stone-200 w-50 flex-wrap h-50 grid content-center text-center rounded-lg hover:bg-stone-300 dark:bg-stone-800 dark:hover:bg-stone-700"
-      href={href}
-    >
-      {name}
-    </Link>
-  );
-};
